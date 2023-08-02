@@ -1,0 +1,66 @@
+We write code in our software development, if new developer join and he pull the code,might be code will not works in his machine 
+because of versioning conflicting issues.
+
+Here we need docker,
+but what is difference between docker and virtual box
+
+VBox is entirely OS, but docker is not it is just a container
+that we use it just created an image of it everything any devloper 
+anybody who want to work with it, we just give them this container 
+and he/she can easily manage it without bothering about installing dependency managing versioning.
+
+As we work with docker and we push code our code will be saved in docker registry, it docker's github.
+
+
+
+
+-Create one local server in our local machine : and run it locally, 
+-create one docker file .Dockerfile -> write some configuration
+                                    Share the docker : base image,(FROM node:latest)
+                                                       Copy file to image( COPY index.js /home/app/index.js
+                                                                           COPY package.json /home/app/package.json)
+                                                                           WORKDIR /home/app/
+                                                                           RUN npm install
+                                                                           CMD ["node", "index"]
+                                                                           EXPOSE 9000
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+hub.docker.com
+
+-> docker version
+->docker run -it ubuntu
+-> docker pull node
+docker run -it node
+docker build -t myapp . [build file dot -> same directory]
+docker run -it myapp     [Sever running insider docker] now expose the port 
+
+This server is running inside the docker,
+and now I have to expose it outside the file
+
+docker run -p 3000:9000/ port mapping
+
+
+
+Push on docker hub :
+docker build -t voyin7/myapp .
+now pull the image, create container and push it to the docker hub
+docker push voyin7/myapp
+docker run -it -p 9000:9000 voyin7/myapp
+docker container ls
+docker stop id
+docker container remove id
+docker image ls
+coker image rm
